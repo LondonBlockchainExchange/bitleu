@@ -26,16 +26,9 @@ Max moneysupply: 5,000,000,000 BTL
 
 Block Rewards:
 
-    Block 2 - 100,000 = 125 coins
-    Block 100,001 - 200,000 = 250 coins
-    Block 200,001 - 300,000 = 500 coins
-    Block 300,001 - 500,000 = 1000 coins
-    Block 500,001 - 1 000,000 = 2000 coins
-    Block 1,000,001 - 1,500,000 = 1000 coins
-    Block 1,500,001 - 2,000,000 = 500 coins
-    Block 2,000,001 - 2,500,000 = 250 coins
-    Block 2,500,001 - 3,000,000 = 125 coins
-    Block 3,000,001 - 8,500,000 = 50 coins
+    Block 2 -> 100,000 = 125 coins
+    Block 100,001 -> 125,000 = 250 coins
+	Block 125,001 -> 99,375,001 = 25 coins
 
 Block time: 60 seconds
 

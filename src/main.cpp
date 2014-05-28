@@ -1005,6 +1005,7 @@ int64 GetProofOfWorkReward( int nHeight, uint256 prevHash)
 	
 // Bitleu block size.
         int64 nSubsidy = 1 * COIN;
+
         if(nHeight == 1)    
         {
                 nSubsidy = 2500000000 * COIN;		// Premining 1 coin. (10000 blocks * 0.0001 coins) = Total 1 coin. ** For network security purpose. (Needed with the fair launch).
@@ -1013,42 +1014,15 @@ int64 GetProofOfWorkReward( int nHeight, uint256 prevHash)
         {
 				nSubsidy = 125 * COIN;
 		}	
-		else if(nHeight < 200001) // decreasing block size on every blocks -1.  ** Blocks: 160001 - 310000
+		else if(nHeight < 125001) // decreasing block size on every blocks -1.  ** Blocks: 160001 - 310000
         {
 				nSubsidy = 250 * COIN;
 		}			
-		else if(nHeight < 300001)    				// Decreasing block size, slowing down with -0.01 steps.  ** Blocks: 310001 - rest
+		else if(nHeight < 99375001)    
         {
-				nSubsidy = 500 * COIN;
+				nSubsidy = 25 * COIN;
 		}
-                else if(nHeight < 500001)                              // Decreasing block size, slowing down with -0.01 steps.  ** Blocks: 310001 - rest
-        {
-                                nSubsidy = 1000 * COIN;
-                }
-	                  else if(nHeight < 1000001)                              // Decreasing block size, slowing down with -0.01 steps.  ** Blocks: 310001 - rest
-        {
-                                nSubsidy = 2000 * COIN;
-                }
-                          else if(nHeight < 1500001)                              // Decreasing block size, slowing down with -0.01 steps.  ** Blocks: 310001 - rest
-        {
-                                nSubsidy = 1000 * COIN;
-                }
-                          else if(nHeight < 2000001)                              // Decreasing block size, slowing down with -0.01 steps.  ** Blocks: 310001 - rest
-        {
-                                nSubsidy = 500 * COIN;
-                }
-                          else if(nHeight < 2500001)                              // Decreasing block size, slowing down with -0.01 steps.  ** Blocks: 310001 - rest
-        {
-                                nSubsidy = 250 * COIN;
-                }
-                          else if(nHeight < 3000001)                              // Decreasing block size, slowing down with -0.01 steps.  ** Blocks: 310001 - rest
-        {
-                                nSubsidy = 125 * COIN;
-                }
-                          else if(nHeight < 8500000)                              // Decreasing block size, slowing down with -0.01 steps.  ** Blocks: 310001 - rest
-        {
-                                nSubsidy = 50 * COIN;
-                }
+        
 
     return nSubsidy;
 }

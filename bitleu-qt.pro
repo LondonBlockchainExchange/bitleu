@@ -357,12 +357,12 @@ isEmpty(BOOST_INCLUDE_PATH) {
 
 isEmpty(OPENSSL_INCLUDE_PATH) {
 # homebrew
-    macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.1e/include/
+    macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.1g/include/
 }
 
 isEmpty(OPENSSL_LIB_PATH) {
 #homebrew
-    macx:OPENSSL_LIB_PATH = /usr/local/Cellar/openssl/1.0.1e/lib/
+    macx:OPENSSL_LIB_PATH = /usr/local/Cellar/openssl/1.0.1g/lib/
 }
 
 windows:DEFINES += WIN32 WIN32_LEAN_AND_MEAN
