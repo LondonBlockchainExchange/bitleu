@@ -53,6 +53,7 @@
 #include <QTimer>
 #include <QDragEnterEvent>
 #include <QUrl>
+#include <QMimeData>
 #include <QStyle>
 
 #include <iostream>

@@ -37,10 +37,12 @@ UI_DIR = build
 contains(RELEASE, 1) {
     # Mac: compile for maximum compatibility (10.5, 32-bit)
     macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
+    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
+    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
 
-    !windows:!macx {
-        # Linux: static link
-        LIBS += -Wl,-Bstatic
+    !win32:!macx {
+        # Linux: static link and extra security (see: https://wiki.debian.org/Hardening)
+        LIBS += -Wl,-Bstatic -Wl,-z,relro -Wl,-z,now
     }
 }
 
@@ -329,10 +331,7 @@ isEmpty(BOOST_THREAD_LIB_SUFFIX) {
 # Paths are different depending on if macports or homebrew is used to build dependencies
 
 isEmpty(BDB_LIB_PATH) {
-#macports
-    #macx:BDB_LIB_PATH = /opt/local/lib/db48
-#homebrew
-    macx:BDB_LIB_PATH = /usr/local/Cellar/berkeley-db4/4.8.30/lib/
+    macx:BDB_LIB_PATH = /opt/local/lib/db48
 }
 
 isEmpty(BDB_LIB_SUFFIX) {
@@ -340,34 +339,15 @@ isEmpty(BDB_LIB_SUFFIX) {
 }
 
 isEmpty(BDB_INCLUDE_PATH) {
-#macports
-    #macx:BDB_INCLUDE_PATH = /opt/local/include/db48
-#homebrew
-    macx:BDB_INCLUDE_PATH = /usr/local/Cellar/berkeley-db4/4.8.30/include/
+    macx:BDB_INCLUDE_PATH = /opt/local/include/db48
 }
 
 isEmpty(BOOST_LIB_PATH) {
-#macports
-    #macx:BOOST_LIB_PATH = /opt/local/lib
-#homebrew
-    macx:BOOST_LIB_PATH = /usr/local/Cellar/boost/1.55.0/lib/
+    macx:BOOST_LIB_PATH = /opt/local/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
-#macports
-    #macx:BOOST_INCLUDE_PATH = /opt/local/include
-#homebrew
-    macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost/1.55.0/include/
-}
-
-isEmpty(OPENSSL_INCLUDE_PATH) {
-# homebrew
-    macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.1g/include/
-}
-
-isEmpty(OPENSSL_LIB_PATH) {
-#homebrew
-    macx:OPENSSL_LIB_PATH = /usr/local/Cellar/openssl/1.0.1g/lib/
+    macx:BOOST_INCLUDE_PATH = /opt/local/include
 }
 
 windows:DEFINES += WIN32 WIN32_LEAN_AND_MEAN
@@ -394,7 +374,7 @@ macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
 macx:ICON = src/qt/res/icons/Bitleu.icns
-macx:TARGET = "Bitleu-Qt"
+macx:TARGET = "Bitleu"
 macx:QMAKE_CFLAGS_THREAD += -pthread -no-integrated-as
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread
