@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 1.1.1
+!define VERSION 1.1.2
 !define COMPANY "Bitleu project"
 !define URL http://www.bitleu.org
 
@@ -45,13 +45,13 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile Bitleu-1.1.1-win32-setup.exe
+OutFile Bitleu-1.1.2-win32-setup.exe
 InstallDir $PROGRAMFILES\Bitleu
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 1.1.1.0
+VIProductVersion 1.1.2.0
 VIAddVersionKey ProductName Bitleu
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
